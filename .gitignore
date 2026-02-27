@@ -1,0 +1,19 @@
+# API Keys and Secrets
+.env
+
+# Temporary / Output files
+outputs/*.txt
+outputs/*.mp3
+outputs/*.mp4
+test_output.txt
+
+# Python
+__pycache__/
+*.py[cod]
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Large medical files from previous work (if not needed)
+medical_questionnaire.*

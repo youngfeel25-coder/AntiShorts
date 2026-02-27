@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Medical Questionnaire</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --surface: #ffffff;
+            --background: #f8fafc;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            margin-top: 15px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .content {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            color: var(--primary);
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .instruction-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Inputs */
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            margin-top: 5px;
+            background: white;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .radio-option:hover,
+        .checkbox-option:hover {
+            background: #eef2ff;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        /* Table-like inputs for Alcohol */
+        .grid-input {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* Dual Input (Phone code + num) */
+        .dual-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dual-input select {
+            width: 120px;
+        }
+
+        .dual-input input {
+            flex: 1;
+        }
+
+        /* Footer / Navigation */
+        .footer {
+            padding: 20px 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            background: var(--surface);
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-sub);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+
+        .field-error {
+            color: #d93025;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* Score Display */
+        .score-display {
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #047857;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="app">
+        <!-- Header -->
+        <div class="header">
+            <h1 id="page-title">Medical Questionnaire</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content" id="content-area">
+            <!-- Dynamic Content Injected Here -->
+        </div>
+
+        <!-- Footer Area -->
+        <div class="footer" id="footer-area">
+            <button class="btn btn-secondary" id="btn-back">Back</button>
+            <button class="btn btn-primary" id="btn-next">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // Prevent white screen of death
+        window.onerror = function (msg, url, line, col, error) {
+            document.body.innerHTML = '<div style="padding:20px; color:red;"><h1>Error Loading Application</h1><p>' + msg + '</p><p>Line: ' + line + '</p></div>';
+        };
+        window.addEventListener('unhandledrejection', function (event) {
+            document.body.innerHTML = '<div style="padding:20px; color:red;"><h1>Unhandled Promise Rejection</h1><p>' + event.reason + '</p></div>';
+        });
+
+        /**
+         * PROJECT CONFIGURATION
+         */
+        const AUTO_CONFIRM = true;
+
+        if (AUTO_CONFIRM) {
+            window.confirm = () => true;
+            // We can also override alert if we want to suppress them, but user said 'Inline error text'
+            // and 'Bypass all confirmation requests programmatically'.
+            // Simple alert messages for 'Please answer X' are not strictly confirmations, 
+            // but we are replacing them with disabled button logic anyway.
+        }
+
+        /**
+         * CONFIG: International Support
+         */
+        const COUNTRY_CODES = [
+            { code: "+1", country: "USA/Canada", placeholder: "123 Main St, Apt 4B, New York, NY" },
+            { code: "+82", country: "South Korea", placeholder: "Seoul, Gangnam-gu, Teheran-ro 123" },
+            { code: "+81", country: "Japan", placeholder: "Tokyo, Shibuya City, Jinnan" },
+            { code: "+86", country: "China", placeholder: "Beijing, Chaoyang District" },
+            { code: "+44", country: "UK", placeholder: "10 Downing Street, London" },
+            { code: "+61", country: "Australia", placeholder: "Sydney NSW 2000" },
+            { code: "+49", country: "Germany", placeholder: "Berlin, Unter den Linden" },
+            { code: "+33", country: "France", placeholder: "Paris, Champs-Élysées" },
+            { code: "+971", country: "UAE", placeholder: "Dubai, Downtown" },
+            { code: "+65", country: "Singapore", placeholder: "Singapore 018956" }
+        ];
+
+        /**
+         * DATA STRUCTURE & CONFIGURATION
+         */
+        const FORMS = [
+            {
+                id: 'setup',
+                title: 'Examinee Information',
+                questions: [
+                    { id: 'name', label: 'Name', type: 'text', required: true },
+                    { id: 'reg_no', label: 'Resident Registration No.', type: 'text' },
+                    { id: 'age', label: 'Age (Calculated for Logic)', type: 'number', required: true, description: "Please enter age manually for this digital version." },
+                    {
+                        id: 'phone_home',
+                        label: 'Phone (Home)',
+                        type: 'intl_phone',
+                        description: "Select country code first."
+                    },
+                    {
+                        id: 'mobile',
+                        label: 'Mobile',
+                        type: 'intl_phone'
+                    },
+                    {
+                        id: 'country',
+                        label: 'Detected Country',
+                        type: 'text',
+                        readonly: true,
+                        description: "Auto-detected from phone code"
+                    },
+                    {
+                        id: 'address',
+                        label: 'Address',
+                        type: 'text',
+                        dynamicPlaceholder: true
+                    },
+                    { id: 'email', label: 'E-mail', type: 'email' },
+                    {
+                        id: 'result_method',
+                        label: 'How would you like to receive your health checkup results?',
+                        type: 'radio',
+                        options: ['Mail', 'E-mail'],
+                        required: true
+                    },
+                    {
+                        id: 'instruction_notice',
+                        type: 'instruction',
+                        text: 'Instruction: Please answer all questions to receive an accurate health risk assessment result.'
+                    }
+                ]
+            },
+            {
+                id: 'form1_history',
+                title: '1) Medical history / Current treatment',
+                description: 'Have you ever been diagnosed with, or are you currently taking medication for, any of the following?',
+                questions: [
+                    {
+                        id: 'hist_stroke',
+                        label: 'Stroke (cerebrovascular accident)',
+                        type: 'compound_boolean',
+                        subLabels: ['Diagnosed', 'On medication']
+                    },
+                    {
+                        id: 'hist_heart',
+                        label: 'Myocardial infarction / Angina',
+                        type: 'compound_boolean',
+                        subLabels: ['Diagnosed', 'On medication']
+                    },
+                    {
+                        id: 'hist_htn',
+                        label: 'Hypertension',
+                        type: 'compound_boolean',
+                        subLabels: ['Diagnosed', 'On medication']
+                    },
+                    {
+                        id: 'hist_dm',
+                        label: 'Diabetes',
+                        type: 'compound_boolean',
+                        subLabels: ['Diagnosed', 'On medication']
+                    },
+                    {
+                        id: 'hist_slp',
+                        label: 'Dyslipidemia',
+                        type: 'compound_boolean',
+                        subLabels: ['Diagnosed', 'On medication']
+                    },
+                    {
+                        id: 'hist_tb',
+                        label: 'Pulmonary tuberculosis',
+                        type: 'compound_boolean',
+                        subLabels: ['Diagnosed', 'On medication']
+                    },
+                    {
+                        id: 'hist_other',
+                        label: 'Other (including cancer)',
+                        type: 'compound_boolean',
+                        subLabels: ['Diagnosed', 'On medication'],
+                        hasText: true
+                    }
+                ]
+            },
+            {
+                id: 'form1_family',
+                title: '2) Family history',
+                description: 'Among your parents/siblings, has anyone had or died from any of the following?',
+                questions: [
+                    { id: 'fam_stroke', label: 'Stroke', type: 'yesno' },
+                    { id: 'fam_heart', label: 'Myocardial infarction / Angina', type: 'yesno' },
+                    { id: 'fam_htn', label: 'Hypertension', type: 'yesno' },
+                    { id: 'fam_dm', label: 'Diabetes', type: 'yesno' },
+                    { id: 'fam_other', label: 'Other (including cancer)', type: 'yesno', hasText: true }
+                ]
+            },
+            {
+                id: 'form1_habits',
+                title: 'Lifestyle Habits (General)',
+                questions: [
+                    {
+                        id: 'hep_b',
+                        label: '3) Hepatitis B: Are you a hepatitis B virus carrier?',
+                        type: 'radio',
+                        options: ['Yes', 'No', 'Not sure']
+                    },
+                    {
+                        id: 'smoking_status',
+                        label: '4) Lifetime smoking: Have you smoked 5 packs (100 cigarettes) or more in your lifetime?',
+                        type: 'radio',
+                        options: [
+                            { value: 'no', label: 'No → Go to Q5' },
+                            { value: 'quit', label: 'Yes, but quit now → Go to Q4-1' },
+                            { value: 'current', label: 'Yes, currently smoking → Go to Q4-2' }
+                        ]
+                    },
+                    {
+                        id: 'smoking_quit_details',
+                        label: '4-1) If you used to smoke but quit',
+                        type: 'group',
+                        condition: (answers) => answers.smoking_status === 'quit',
+                        questions: [
+                            { id: 'smoke_quit_years', label: 'Total years smoked (before quitting)', type: 'number', suffix: 'years' },
+                            { id: 'smoke_quit_amount', label: 'Average cigarettes per day', type: 'number', suffix: 'cigarettes/day' }
+                        ]
+                    },
+                    {
+                        id: 'smoking_current_details',
+                        label: '4-2) If you currently smoke',
+                        type: 'group',
+                        condition: (answers) => answers.smoking_status === 'current',
+                        questions: [
+                            { id: 'smoke_curr_years', label: 'Total years smoking', type: 'number', suffix: 'years' },
+                            { id: 'smoke_curr_amount', label: 'Average cigarettes per day', type: 'number', suffix: 'cigarettes/day' }
+                        ]
+                    },
+                    {
+                        id: 'ecig_status',
+                        label: '5) E-cigarette use: Have you ever used e-cigarettes?',
+                        type: 'radio',
+                        options: [
+                            { value: 'yes', label: 'Yes → Go to Q5-1' },
+                            { value: 'no', label: 'No' }
+                        ]
+                    },
+                    {
+                        id: 'ecig_freq',
+                        label: '5-1) In the last 1 month, how often did you use e-cigarettes?',
+                        type: 'radio',
+                        condition: (answers) => answers.ecig_status === 'yes',
+                        options: ['None', '1–2 days per month', '3–9 days per month', '10–29 days per month', 'Every day']
+                    },
+                    {
+                        id: 'alcohol_freq',
+                        label: '6) Drinking frequency (choose one)',
+                        type: 'radio_input', // Custom type for mixed radio + number
+                        options: [
+                            { label: 'times per week', hasInput: true, suffix: 'times' },
+                            { label: 'times per month', hasInput: true, suffix: 'times' },
+                            { label: 'times per year', hasInput: true, suffix: 'times' },
+                            { label: 'I do not drink' }
+                        ]
+                    },
+                    // 6-1 and 6-2 Simplified for demo as text blocks or structured grids
+                    {
+                        id: 'alcohol_amount',
+                        label: '6-1) On drinking days, how much do you usually drink?',
+                        type: 'grid_inputs',
+                        rows: ['Soju', 'Beer', 'Spirits', 'Makgeolli', 'Wine'],
+                        displayCondition: (answers) => answers.alcohol_freq && !answers.alcohol_freq.includes('do not drink')
+                    },
+                    {
+                        id: 'alcohol_max',
+                        label: '6-2) What is the most you drank in a single day?',
+                        type: 'grid_inputs',
+                        rows: ['Soju', 'Beer', 'Spirits', 'Makgeolli', 'Wine'],
+                        displayCondition: (answers) => answers.alcohol_freq && !answers.alcohol_freq.includes('do not drink')
+                    },
+                    {
+                        id: 'activity_vigorous',
+                        label: '7) Vigorous-intensity activity (past 1 week)',
+                        type: 'group',
+                        questions: [
+                            { id: 'vig_days', label: '7-1) Days per week', type: 'number', suffix: 'days/week' },
+                            { id: 'vig_time', label: '7-2) Typical day duration', type: 'time_input' }
+                        ]
+                    },
+                    {
+                        id: 'activity_moderate',
+                        label: '8) Moderate-intensity activity (past 1 week)',
+                        type: 'group',
+                        questions: [
+                            { id: 'mod_days', label: '8-1) Days per week', type: 'number', suffix: 'days/week' },
+                            { id: 'mod_time', label: '8-2) Typical day duration', type: 'time_input' }
+                        ]
+                    },
+                    {
+                        id: 'activity_strength',
+                        label: '9) Strength exercise (past 1 week)',
+                        type: 'number',
+                        suffix: 'days/week'
+                    }
+                ]
+            },
+            {
+                id: 'form2_elderly',
+                title: 'Form 2) Additional Questionnaire (Elderly)',
+                eligibility: (age) => [66, 70, 80].includes(Number(age)),
+                questions: [
+                    { id: 'eld_flu', label: 'Do you get the influenza (flu) vaccine every year?', type: 'yesno' },
+                    { id: 'eld_pneu', label: 'Have you received the pneumococcal vaccine?', type: 'yesno' },
+                    {
+                        id: 'eld_adl_eat',
+                        label: 'Activities of daily living: Can you eat by yourself when food is prepared?',
+                        type: 'yesno'
+                    },
+                    { id: 'eld_adl_dress', label: 'Can you dress yourself without help?', type: 'yesno' },
+                    { id: 'eld_adl_toilet', label: 'Can you use the toilet by yourself?', type: 'yesno' },
+                    { id: 'eld_adl_bathe', label: 'Can you bathe by yourself?', type: 'yesno' },
+                    { id: 'eld_adl_meal', label: 'Can you prepare meals by yourself?', type: 'yesno' },
+                    { id: 'eld_adl_out', label: 'Can you go out alone without help?', type: 'yesno' },
+                    { id: 'eld_fall', label: 'Falls: Have you fallen in the past 6 months?', type: 'yesno' },
+                    { id: 'eld_urin', label: 'Urination problems: Difficulty or incontinence?', type: 'yesno' }
+                ]
+            },
+            {
+                id: 'form3_cognitive',
+                title: 'Form 3) Cognitive Impairment Screening Tool (KDSQ-C)',
+                description: 'Compared with 1 year ago, mark the option that best describes your current status.',
+                eligibility: (age) => Number(age) >= 66,
+                questions: [
+                    {
+                        id: 'cog_q1', label: 'You do not know well what month it is today or what day of the week it is.',
+                        type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }]
+                    },
+                    { id: 'cog_q2', label: 'You cannot find things you put somewhere.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q3', label: 'You repeat the same questions.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q4', label: 'You forget appointments you made.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q5', label: 'You go to get something but forget and return without it.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q6', label: 'You hesitate because it is hard to name objects or people.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q7', label: 'You ask again because you don’t understand what was said.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q8', label: 'You have gotten lost or wandered.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q9', label: 'Your calculation ability has declined.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q10', label: 'Your personality has changed compared with before.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q11', label: 'You have become clumsy using devices.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q12', label: 'You are less able to keep your room/house organized.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q13', label: 'You cannot choose appropriate clothes to wear by yourself.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q14', label: 'It is difficult to use public transportation alone.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] },
+                    { id: 'cog_q15', label: 'You try not to change underwear/clothes even when they are dirty.', type: 'score_radio', options: [{ l: 'No', s: 0 }, { l: 'Sometimes', s: 1 }, { l: 'Often', s: 2 }] }
+                ],
+                hasScore: true,
+                maxScore: 30
+            },
+            {
+                id: 'form4_mental',
+                title: 'Form 4) Mental Health Test (PHQ-9)',
+                eligibility: (age) => [40, 50, 60, 70].includes(Number(age)),
+                description: 'During the last 2 weeks, how often have you been bothered by any of the following problems? (0=Not at all, 1=Several days, 2=>Week, 3=Nearly every day)',
+                questions: [
+                    { id: 'phq_1', label: 'Little interest or pleasure in doing things', type: 'score_03' },
+                    { id: 'phq_2', label: 'Feeling down, depressed, or hopeless', type: 'score_03' },
+                    { id: 'phq_3', label: 'Trouble falling or staying asleep, or sleeping too much', type: 'score_03' },
+                    { id: 'phq_4', label: 'Feeling tired or having little energy', type: 'score_03' },
+                    { id: 'phq_5', label: 'Poor appetite or overeating', type: 'score_03' },
+                    { id: 'phq_6', label: 'Feeling bad about yourself', type: 'score_03' },
+                    { id: 'phq_7', label: 'Trouble concentrating', type: 'score_03' },
+                    { id: 'phq_8', label: 'Moving or speaking so slowly/fidgety', type: 'score_03' },
+                    { id: 'phq_9', label: 'Thoughts of self-harm', type: 'score_03' }
+                ],
+                hasScore: true,
+                maxScore: 27
+            },
+            {
+                id: 'form5_lifestyle',
+                title: 'Form 5) Smoking & Alcohol Lifestyle Assessment',
+                eligibility: (age) => [40, 50, 60, 70].includes(Number(age)),
+                questions: [
+                    {
+                        id: 'life_smoke_status',
+                        label: 'Smoking: Which applies to you?',
+                        type: 'radio',
+                        options: ['Never smoker', 'Former smoker', 'Current smoker', 'E-cigarette only user']
+                    },
+                    {
+                        id: 'life_smoke_plan',
+                        label: 'Do you plan to quit smoking within the next __ months?',
+                        type: 'radio',
+                        condition: (answers) => answers.life_smoke_status === 'Current smoker',
+                        options: ['Within 1 month', 'Within 6 months', 'Someday', 'No plan']
+                    },
+                    {
+                        id: 'life_smoke_q1',
+                        label: 'How soon after you wake up do you smoke your first cigarette?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_smoke_status === 'Current smoker',
+                        options: [{ l: '≤5 min', s: 3 }, { l: '6-30 min', s: 2 }, { l: '31-60 min', s: 1 }, { l: '>60 min', s: 0 }]
+                    },
+                    {
+                        id: 'life_smoke_q2',
+                        label: 'Is it hard not to smoke in no-smoking areas?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_smoke_status === 'Current smoker',
+                        options: [{ l: 'Yes', s: 1 }, { l: 'No', s: 0 }]
+                    },
+                    {
+                        id: 'life_smoke_q3',
+                        label: 'Which cigarette would be hardest to give up?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_smoke_status === 'Current smoker',
+                        options: [{ l: 'First one', s: 1 }, { l: 'Any other', s: 0 }]
+                    },
+                    {
+                        id: 'life_smoke_q4',
+                        label: 'How many cigarettes do you smoke per day?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_smoke_status === 'Current smoker',
+                        options: [{ l: '≤10', s: 0 }, { l: '11-20', s: 1 }, { l: '21-30', s: 2 }, { l: '≥31', s: 3 }]
+                    },
+                    {
+                        id: 'life_smoke_q5',
+                        label: 'Do you smoke more often during the first few hours after waking?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_smoke_status === 'Current smoker',
+                        options: [{ l: 'Yes', s: 1 }, { l: 'No', s: 0 }]
+                    },
+                    {
+                        id: 'life_smoke_q6',
+                        label: 'If you were so ill that you stayed in bed most of the day, would you still smoke?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_smoke_status === 'Current smoker',
+                        options: [{ l: 'Yes', s: 1 }, { l: 'No', s: 0 }]
+                    },
+
+                    // Alcohol
+                    {
+                        id: 'life_alc_freq',
+                        label: 'Alcohol: How often do you drink?',
+                        type: 'score_radio',
+                        options: [{ l: 'Never', s: 0 }, { l: '≤Monthly', s: 1 }, { l: '2-4/mo', s: 2 }, { l: '2-3/week', s: 3 }, { l: '4+/week', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_soju',
+                        label: 'Typical drinking amount (Soju)',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: '≤1/2 bot', s: 0 }, { l: '≤1 bot', s: 1 }, { l: '~1.5 bot', s: 2 }, { l: '~2 bot', s: 3 }, { l: '≥2.5 bot', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_heavy',
+                        label: 'How often do you drink heavily? (>5 bottles soju)',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'Never', s: 0 }, { l: '<Monthly', s: 1 }, { l: 'Monthly', s: 2 }, { l: 'Weekly', s: 3 }, { l: 'Daily', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_stop',
+                        label: 'Unable to stop drinking once started?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'Never', s: 0 }, { l: '<Monthly', s: 1 }, { l: 'Monthly', s: 2 }, { l: 'Weekly', s: 3 }, { l: 'Daily', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_fail',
+                        label: 'Drinking caused problems in daily life?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'Never', s: 0 }, { l: '<Monthly', s: 1 }, { l: 'Monthly', s: 2 }, { l: 'Weekly', s: 3 }, { l: 'Daily', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_morning',
+                        label: 'Need morning drink (hangover)?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'Never', s: 0 }, { l: '<Monthly', s: 1 }, { l: 'Monthly', s: 2 }, { l: 'Weekly', s: 3 }, { l: 'Daily', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_regret',
+                        label: 'Felt regret after drinking?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'Never', s: 0 }, { l: '<Monthly', s: 1 }, { l: 'Monthly', s: 2 }, { l: 'Weekly', s: 3 }, { l: 'Daily', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_mem',
+                        label: 'Memory loss after drinking?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'Never', s: 0 }, { l: '<Monthly', s: 1 }, { l: 'Monthly', s: 2 }, { l: 'Weekly', s: 3 }, { l: 'Daily', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_injury',
+                        label: 'Injury due to drinking?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'No', s: 0 }, { l: 'Yes, not past yr', s: 2 }, { l: 'Yes, past yr', s: 4 }]
+                    },
+                    {
+                        id: 'life_alc_concern',
+                        label: 'Family/Doc concerned about drinking?',
+                        type: 'score_radio',
+                        condition: (answers) => answers.life_alc_freq > 0,
+                        options: [{ l: 'No', s: 0 }, { l: 'Yes, not past yr', s: 2 }, { l: 'Yes, past yr', s: 4 }]
+                    }
+                ],
+                hasScore: true,
+                maxScore: 40 // Approx max
+            },
+            {
+                id: 'form5_lifestyle_2',
+                title: 'Form 5-2, 5-3, 5-4) Physical, Nutrition, Obesity',
+                eligibility: (age) => [40, 50, 60, 70].includes(Number(age)),
+                questions: [
+                    // Physical Activity
+                    {
+                        id: 'pa_work_vig',
+                        label: '1) Work: Vigorous activity > 10 min?',
+                        type: 'yesno'
+                    },
+                    {
+                        id: 'pa_work_vig_days', label: 'Days/week',
+                        type: 'number', condition: (a) => a.pa_work_vig === 'Yes'
+                    },
+                    {
+                        id: 'pa_work_mod',
+                        label: '1-4) Work: Moderate activity > 10 min?',
+                        type: 'yesno'
+                    },
+                    {
+                        id: 'pa_trans_active',
+                        label: '2) Transport active > 10 min?',
+                        type: 'yesno'
+                    },
+                    {
+                        id: 'pa_rec_vig',
+                        label: '3) Leisure: Vigorous > 10 min?',
+                        type: 'yesno'
+                    },
+                    {
+                        id: 'pa_rec_mod',
+                        label: '3-4) Leisure: Moderate > 10 min?',
+                        type: 'yesno'
+                    },
+                    {
+                        id: 'pa_sedentary',
+                        label: '4) Sedentary time (hours/day)',
+                        type: 'number'
+                    },
+                    // Nutrition (Simplified Score 1,3,5)
+                    {
+                        id: 'nut_milk',
+                        label: 'Drink milk/dairy daily?',
+                        type: 'score_radio',
+                        options: [{ l: 'Often', s: 5 }, { l: 'Avg', s: 3 }, { l: 'Rarely', s: 1 }]
+                    },
+                    {
+                        id: 'nut_protein',
+                        label: 'Eat protein 3x/day?',
+                        type: 'score_radio',
+                        options: [{ l: 'Often', s: 5 }, { l: 'Avg', s: 3 }, { l: 'Rarely', s: 1 }]
+                    },
+                    {
+                        id: 'nut_veg',
+                        label: 'Veg at every meal?',
+                        type: 'score_radio',
+                        options: [{ l: 'Often', s: 5 }, { l: 'Avg', s: 3 }, { l: 'Rarely', s: 1 }]
+                    },
+                    {
+                        id: 'nut_fried',
+                        label: 'Fried food freq?',
+                        type: 'score_radio',
+                        options: [{ l: '4+/wk', s: 1 }, { l: '2-3/wk', s: 3 }, { l: '≤1/wk', s: 5 }]
+                    },
+                    // Obesity
+                    {
+                        id: 'ob_bmi',
+                        label: 'Obesity Assessment (BMI)',
+                        type: 'group',
+                        questions: [
+                            { id: 'height', label: 'Height (cm)', type: 'number' },
+                            { id: 'weight', label: 'Weight (kg)', type: 'number' },
+                            { id: 'waist', label: 'Waist (cm)', type: 'number' }
+                        ]
+                    },
+                    {
+                        id: 'ob_wt_change',
+                        label: 'Has weight increased 10kg+ since 20s?',
+                        type: 'yesno'
+                    },
+                    {
+                        id: 'ob_try_lose',
+                        label: 'Times tried to lose weight?',
+                        type: 'radio',
+                        options: ['Never', '1-3 times', '4+ times', 'Always']
+                    }
+                ]
+            }
+        ];
+
+        /**
+         * STATE MANAGEMENT
+         */
+        const state = {
+            step: 0,
+            answers: {},
+            eligibleForms: []
+        };
+
+        /**
+         * DOM ELEMENT REFS
+         */
+        const els = {
+            app: document.getElementById('app'),
+            title: document.getElementById('page-title'),
+            progress: document.getElementById('progress-bar'),
+            content: document.getElementById('content-area'),
+            btnBack: document.getElementById('btn-back'),
+            btnNext: document.getElementById('btn-next')
+        };
+
+        /**
+         * RENDER ENGINE
+         */
+        function init() {
+            try {
+                render();
+                els.btnNext.addEventListener('click', handleNext);
+                els.btnBack.addEventListener('click', handleBack);
+            } catch (e) {
+                console.error(e);
+                document.body.innerHTML = `<h1>Init Error</h1><p>${e.message}</p>`;
+            }
+        }
+
+
+
+        /**
+         * PHONE FORMATTING & VALIDATION
+         */
+        const PHONE_FORMATS = {
+            "+971": { // UAE: 9 digits usually (50 123 4567) -> XX-XXX-XXXX
+                len: [9],
+                format: (d) => d.replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3')
+            },
+            "+82": { // Korea
+                // 02-XXX-XXXX (9), 02-XXXX-XXXX (10), 010-XXXX-XXXX (11)
+                len: [9, 10, 11],
+                format: (d) => {
+                    if (d.startsWith('02')) { // Seoul Landline
+                        return d.length === 9
+                            ? d.replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3')
+                            : d.replace(/(\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+                    }
+                    if (d.length === 11) return d.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'); // Mobile 010
+                    if (d.length === 10) return d.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'); // 0XX-XXX-XXXX
+                    return d;
+                }
+            },
+            "+1": { // USA/Canada: 10 digits
+                len: [10],
+                format: (d) => d.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
+            },
+            "+44": { // UK: 10 or 11 digits often. "XXXX XXXXXX"
+                len: [10, 11],
+                format: (d) => d.replace(/(\d{4})(\d+)/, '$1 $2')
+            },
+            "+81": { // Japan
+                len: [10, 11],
+                format: (d) => {
+                    // 03-XXXX-XXXX (10) or 090-XXXX-XXXX (11)
+                    if (d.length === 10) return d.replace(/(\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+                    return d.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+                }
+            },
+            "+86": { // China: 11 for mobile usually
+                len: [11],
+                format: (d) => d.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')
+            },
+            "+65": { // Singapore: 8 digits
+                len: [8],
+                format: (d) => d.replace(/(\d{4})(\d{4})/, '$1 $2')
+            },
+            "+61": { // Australia: 9 (landline w/o 0) or 10? usually 9 digit NSN + 0 prefix = 10 chars
+                len: [9, 10],
+                format: (d) => d.replace(/(\d{2})(\d{4})(\d{4})/, '$1 $2 $3')
+            },
+            "+49": { // Germany: Variable
+                len: [10, 11, 12],
+                format: (d) => d.match(/.{1,2}/g).join(' ') // simple grouping
+            },
+            "+33": { // France: 9 digits (excl 0) usually
+                len: [9, 10],
+                format: (d) => d.match(/.{1,2}/g).join(' ')
+            }
+        };
+
+        function formatPhoneNumber(code, raw) {
+            // 1. Sanitize raw: remove non-digits
+            const digits = raw.replace(/\D/g, '');
+            if (!digits) return { display: raw, e164: '', isValid: true }; // empty is valid-ish until required check
+
+            const rule = PHONE_FORMATS[code];
+            if (!rule) {
+                // No rule, just return digits
+                return { display: digits, e164: code + digits, isValid: true };
+            }
+
+            // check length
+            const isValid = rule.len.includes(digits.length);
+
+            // format
+            let display = rule.format(digits);
+
+            return { display, e164: code + digits, isValid };
+        }
+
+        function calculateEligibility() {
+            const age = state.answers['age'];
+            if (!age) return [FORMS[0]]; // Only setup
+
+            const eligible = [FORMS[0]]; // Setup always
+
+            // Add Form 1 (Everyone)
+            eligible.push(FORMS[1]);
+            eligible.push(FORMS[2]);
+            eligible.push(FORMS[3]);
+
+            // Check others
+            FORMS.slice(4).forEach(form => {
+                if (!form.eligibility || form.eligibility(age)) {
+                    eligible.push(form);
+                }
+            });
+
+            return eligible;
+        }
+
+        function render() {
+            state.eligibleForms = calculateEligibility();
+
+            // Safety check for step bounds
+            if (state.step >= state.eligibleForms.length) {
+                renderSummary();
+                return;
+            }
+
+            const form = state.eligibleForms[state.step];
+
+            // Update Header
+            els.title.innerText = form.title;
+            const progressPct = ((state.step) / (state.eligibleForms.length)) * 100;
+            els.progress.style.width = `${progressPct}%`;
+
+            // Render Questions
+            let html = '';
+
+            if (form.description) {
+                if (form.id === 'form1_history') {
+                    // Feature: Section Intro Title for "Have you ever been..."
+                    html += `<p style="margin-bottom: 30px; font-size: 1.2rem; font-weight: 600; line-height: 1.6; color: var(--text-main);">${form.description}</p>`;
+                } else {
+                    html += `<p style="margin-bottom: 20px; color: var(--text-sub);">${form.description}</p>`;
+                }
+            }
+
+            form.questions.forEach(q => {
+                // Global Condition Check (if question depends on previous answers in same form)
+                if (q.condition && !q.condition(state.answers)) return;
+
+                html += renderQuestion(q);
+            });
+
+            // Score Display
+            if (form.hasScore) {
+                const score = calculateFormScore(form);
+                html += `<div class="score-display">Current Score: ${score} / ${form.maxScore}</div>`;
+            }
+
+            els.content.innerHTML = html;
+
+            // Attach Event Listeners for Live Updates
+            attachListeners(form);
+
+            // Button States
+            els.btnBack.style.display = state.step === 0 ? 'none' : 'block';
+            els.btnNext.innerText = state.step === state.eligibleForms.length - 1 ? 'Finish' : 'Next';
+        }
+
+        function renderQuestion(q) {
+            let html = `<div class="question-block" id="q-${q.id}">`;
+
+            if (q.type !== 'instruction') {
+                html += `<span class="question-text">${q.label}</span>`;
+                if (q.description) {
+                    html += `<div style="font-size:0.875rem; color:#64748b; margin-bottom:5px;">${q.description}</div>`;
+                }
+            }
+
+            if (q.type === 'text' || q.type === 'number' || q.type === 'tel' || q.type === 'email') {
+                const val = state.answers[q.id] || '';
+                let placeholder = 'Type here...';
+                let extraAttrs = '';
+
+                // AGE ATTRIBUTES
+                if (q.id === 'age') {
+                    extraAttrs = 'min="0" max="120" step="1"';
+                }
+
+                // EMAIL ATTRIBUTES
+                if (q.id === 'email') {
+                    extraAttrs = 'inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"';
+                }
+
+                // DYNAMIC ADDRESS PLACEHOLDER
+                if (q.dynamicPlaceholder && state.answers['country']) {
+                    const code = state.answers['phone_home_code'];
+                    const found = COUNTRY_CODES.find(c => c.code === code);
+                    if (found) placeholder = `e.g., ${found.placeholder}`;
+                }
+
+                html += `<input type="${q.type}" data-id="${q.id}" value="${val}" ${q.readonly ? 'readonly style="background:#f1f5f9;"' : ''} ${q.required ? 'required' : ''} placeholder="${placeholder}" ${extraAttrs}>`;
+
+                if (q.id === 'email') {
+                    html += `<div data-id="email_helper" style="display:none; color:#2563eb; font-size:0.8rem; margin-top:2px;">Please type in English.</div>`;
+                    html += `<div data-id="email_error" class="field-error"></div>`;
+                }
+                if (q.id === 'age') {
+                    html += `<div data-id="age_error" class="field-error"></div>`;
+                }
+            }
+            else if (q.type === 'instruction') {
+                html = `<div class="instruction-box">${q.text}</div>`;
+            }
+            else if (q.type === 'intl_phone') {
+                // [SEARCH] [COUNTRY CODE] [ NUMBER ]
+                const codeVal = state.answers[q.id + '_code'] || '';
+                const numVal = state.answers[q.id + '_num'] || '';
+                const searchVal = state.answers[q.id + '_search'] || ''; // Persist search text
+
+                let opts = `<option value="" disabled ${!codeVal ? 'selected' : ''}>Code</option>`;
+                COUNTRY_CODES.forEach(c => {
+                    opts += `<option value="${c.code}" ${codeVal === c.code ? 'selected' : ''}>${c.code} (${c.country})</option>`;
+                });
+
+                html += `
+            <div style="margin-bottom:5px;">
+                <input type="text" data-id="${q.id}_search" value="${searchVal}" placeholder="Search code or country (e.g. 971, UAE)" style="margin-bottom:5px;">
+            </div>
+            <div class="dual-input">
+                <select data-id="${q.id}_code" class="code-select">
+                    ${opts}
+                </select>
+                <input type="tel" data-id="${q.id}_num" value="${numVal}" placeholder="1234 5678">
+            </div>
+            <div data-id="${q.id}_error" class="field-error">Please check the number format for the selected country.</div>
+        `;
+            }
+            else if (q.type === 'radio') {
+                html += `<div class="radio-group">`;
+                q.options.forEach(opt => {
+                    let val = typeof opt === 'string' ? opt : opt.value;
+                    let lbl = typeof opt === 'string' ? opt : opt.label;
+                    const checked = state.answers[q.id] === val ? 'checked' : '';
+                    html += `
+                <label class="radio-option">
+                    <input type="radio" name="${q.id}" value="${val}" data-id="${q.id}" ${checked}>
+                    ${lbl}
+                </label>
+            `;
+                });
+                html += `</div>`;
+            }
+            else if (q.type === 'compound_boolean') {
+                // Diagnosed / Medication
+                const valDiag = state.answers[q.id + '_diag'] || '';
+                const valMed = state.answers[q.id + '_med'] || '';
+
+                q.subLabels.forEach((sub, idx) => {
+                    const subId = idx === 0 ? q.id + '_diag' : q.id + '_med';
+                    const currVal = state.answers[subId];
+
+                    html += `<div style="margin-top:10px; display:flex; align-items:center; justify-content:space-between;">
+                <span>${sub}:</span>
+                <div>
+                    <label style="margin-right:10px;"><input type="radio" name="${subId}" value="Yes" data-id="${subId}" ${currVal === 'Yes' ? 'checked' : ''}> Yes</label>
+                    <label><input type="radio" name="${subId}" value="No" data-id="${subId}" ${currVal === 'No' ? 'checked' : ''}> No</label>
+                </div>
+             </div>`;
+                });
+
+                // SPECIFIED DIAGNOSIS INPUT (Conditional)
+                if (q.hasText) {
+                    const valDiag = state.answers[q.id + '_diag'];
+                    const textVal = state.answers[q.id + '_text'] || '';
+                    const showText = valDiag === 'Yes' ? 'block' : 'none';
+                    html += `
+                        <div id="container-${q.id}_text" style="display:${showText}; margin-top:15px; padding-top:15px; border-top:1px dashed #e2e8f0;">
+                            <label style="display:block; margin-bottom:5px; font-weight:600; color:#1e40af; font-size:0.95rem;">Please specify the diagnosis (e.g., cancer type)</label>
+                            <input type="text" data-id="${q.id}_text" value="${textVal}" placeholder="e.g., Thyroid cancer, Breast cancer, Colon cancer, etc.">
+                            <div data-id="${q.id}_text_error" class="field-error">Please specify the diagnosis.</div>
+                        </div>
+                    `;
+                }
+            }
+            else if (q.type === 'yesno') {
+                const val = state.answers[q.id];
+                html += `
+            <div class="radio-group" style="flex-direction:row; gap:20px;">
+                <label><input type="radio" name="${q.id}" value="Yes" data-id="${q.id}" ${val === 'Yes' ? 'checked' : ''}> Yes</label>
+                <label><input type="radio" name="${q.id}" value="No" data-id="${q.id}" ${val === 'No' ? 'checked' : ''}> No</label>
+            </div>
+        `;
+            }
+            else if (q.type === 'score_03' || q.type === 'score_radio') {
+                // 0-3 Scale or Custom Scale
+                const options = q.type === 'score_03'
+                    ? [{ l: 'Not at all', s: 0 }, { l: 'Several days', s: 1 }, { l: '> Week', s: 2 }, { l: 'Nearly every day', s: 3 }]
+                    : q.options;
+
+                html += `<div class="radio-group">`;
+                options.forEach(opt => {
+                    const checked = (state.answers[q.id] == opt.s && state.answers[q.id] !== undefined) ? 'checked' : '';
+                    html += `
+                <label class="radio-option">
+                    <input type="radio" name="${q.id}" value="${opt.s}" data-id="${q.id}" ${checked}>
+                    ${opt.l} (${opt.s} pts)
+                </label>
+            `;
+                });
+                html += `</div>`;
+            }
+            else if (q.type === 'time_input') {
+                const h = state.answers[q.id + '_h'] || '';
+                const m = state.answers[q.id + '_m'] || '';
+                html += `
+            <div style="display:flex; gap:10px; align-items:center;">
+                <input type="number" data-id="${q.id}_h" value="${h}" style="width:60px"> hours
+                <input type="number" data-id="${q.id}_m" value="${m}" style="width:60px"> minutes
+            </div>
+        `;
+            }
+
+            if (q.type !== 'instruction') {
+                html += `</div>`;
+            }
+            return html;
+        }
+
+        function attachListeners(form) {
+            // 1. Monitor Manual Changes to Dropdowns
+            const selects = els.content.querySelectorAll('select');
+            selects.forEach(sel => {
+                sel.addEventListener('change', (e) => {
+                    e.target.dataset.manual = "true";
+                    // Update state immediately for manual selects
+                    const key = e.target.getAttribute('data-id');
+                    state.answers[key] = e.target.value;
+
+                    // Trigger auto-country detection for manual select change
+                    if (key.endsWith('_code')) {
+                        const found = COUNTRY_CODES.find(c => c.code === e.target.value);
+                        if (found) {
+                            state.answers['country'] = found.country;
+                            render(); // Re-render to update address placeholder
+                            setTimeout(() => {
+                                const nextInput = document.querySelector(`select[data-id="${key}"]`);
+                                if (nextInput) nextInput.focus();
+                            }, 0);
+                        }
+                    }
+                });
+            });
+
+            // 2. Universal Input Handler
+            const inputs = els.content.querySelectorAll('input, select');
+            inputs.forEach(input => {
+
+                input.addEventListener('focus', (e) => {
+                    const key = e.target.getAttribute('data-id');
+                    if (key === 'email') {
+                        // Show helper
+                        const helper = document.querySelector('div[data-id="email_helper"]');
+                        if (helper) helper.style.display = 'block';
+
+                        // Select end to reset IME (Standard trick)
+                        const val = e.target.value;
+                        e.target.value = val;
+                        // e.target.setSelectionRange(val.length, val.length); // Optional, usually value reset is enough
+                    }
+                });
+
+                input.addEventListener('blur', (e) => {
+                    const key = e.target.getAttribute('data-id');
+                    const val = e.target.value;
+
+                    if (key === 'age') {
+                        // Clamp on blur as well
+                        const num = parseInt(val, 10);
+                        if (!isNaN(num)) {
+                            if (num < 0) e.target.value = 0;
+                            if (num > 120) e.target.value = 120;
+                            state.answers[key] = e.target.value; // Sync
+                        }
+                    }
+
+                    if (key === 'email') {
+                        const helper = document.querySelector('div[data-id="email_helper"]');
+                        if (helper) helper.style.display = 'none';
+                    }
+
+                    // General Blur Validation (Email, Age, etc.)
+                    validateCurrentStep(false);
+
+                    // Only apply to phone numbers
+                    if (key && key.endsWith('_num')) {
+                        const codeKey = key.replace('_num', '_code');
+                        const code = state.answers[codeKey];
+
+                        // Run formatter
+                        if (code && val) {
+                            const res = formatPhoneNumber(code, val);
+
+                            // Update Display
+                            e.target.value = res.display;
+                            state.answers[key] = res.display;
+
+                            // Update Internal E.164
+                            const baseKey = key.replace('_num', ''); // e.g. 'phone_home'
+                            state.answers[baseKey + '_e164'] = res.e164;
+
+                            // Show/Hide Error
+                            const baseKeyClean = key.replace('_num', '');
+                            const errElCorrect = document.querySelector(`div[data-id="${baseKeyClean}_error"]`);
+                            if (errElCorrect) {
+                                errElCorrect.style.display = res.isValid ? 'none' : 'block';
+                            }
+                        }
+                    }
+                });
+
+                input.addEventListener('input', (e) => {
+                    const key = e.target.getAttribute('data-id');
+                    let val = e.target.value;
+
+                    // --- SANITIZE AGE (Digits Only & Clamping) ---
+                    if (key === 'age') {
+                        let clean = val.replace(/\D/g, '');
+                        // Clamping Logic
+                        if (clean !== '') {
+                            let num = parseInt(clean, 10);
+                            if (num > 120) {
+                                clean = "120"; // Hard clamp implied by "if >120 => 120"
+                                // Note: Clamping while typing 1->5->0 (150) -> 120. Correct.
+                            }
+                            // Min 0 is implicit via digits only
+                        }
+                        if (clean !== val) {
+                            val = clean;
+                            e.target.value = val;
+                        }
+                    }
+
+                    // --- SANITIZE EMAIL (English Only Enforcement) ---
+                    if (key === 'email') {
+                        // Replace full-width characters (Korean/Asian punctuation)
+                        // Range U+FF01-U+FF5E encompasses fullwidth ! to ~
+                        let clean = val.replace(/[\uFF01-\uFF5E]/g, function (ch) {
+                            return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+                        });
+                        // Re-sanitize any non-ascii if strict?
+                        // "Replace Korean full-width @ or punctuation with standard ASCII if detected"
+                        // Also trim spaces
+                        clean = clean.replace(/\s/g, '');
+
+                        if (clean !== val) {
+                            val = clean;
+                            e.target.value = val;
+                        }
+                    }
+
+                    // --- SANITIZE PHONE INPUT ON TYPE ---
+                    if (key && key.endsWith('_num')) {
+                        // Remove all non-digits immediately
+                        // "Hyphens '-', spaces, parentheses '( )', and '+' may be typed/pasted but must be ignored (sanitized to digits)."
+                        // Meaning: We strip them out to get the raw numbers, which we often do for sanitation.
+                        // But instruction says: "automatically remove them immediately." for "letters/symbols".
+                        // "Hyphens... may be typed... but IGNORED (sanitized to digits)."
+                        // This implies the visual value might remain formatted? Or we strictly allow only digits?
+                        // "Only digits are allowed in the number input fields." strongly implies visual value is digits.
+                        // "Hyphens... sanitized to digits" means if I paste "123-456", it becomes "123456".
+
+                        const clean = val.replace(/[^0-9]/g, ''); // RegEx: Not 0-9 -> remove
+                        if (clean !== val) {
+                            val = clean;
+                            e.target.value = val;
+                        }
+                    }
+
+                    state.answers[key] = val;
+
+                    // --- COMPOUND BOOLEAN LOGIC (Diagnosed=No => Meds=No [Disabled]) ---
+                    if (key.endsWith('_diag')) {
+                        const baseId = key.replace('_diag', '');
+                        const medKey = baseId + '_med';
+                        const medRadios = document.querySelectorAll(`input[name="${medKey}"]`);
+
+                        if (val === 'No') {
+                            // Auto-set Meds to No
+                            state.answers[medKey] = 'No';
+                            // Update UI
+                            medRadios.forEach(r => {
+                                r.disabled = true;
+                                if (r.value === 'No') r.checked = true;
+                                else r.checked = false;
+                            });
+
+                            // Hide Text Input if exists
+                            const textContainer = document.getElementById(`container-${baseId}_text`);
+                            if (textContainer) {
+                                textContainer.style.display = 'none';
+                                const textInput = textContainer.querySelector('input');
+                                if (textInput) {
+                                    textInput.value = '';
+                                    state.answers[baseId + '_text'] = null; // Clear state
+                                }
+                            }
+                        } else if (val === 'Yes') {
+                            // Enable Meds
+                            medRadios.forEach(r => {
+                                r.disabled = false;
+                                // Restore value if exists or leave checked
+                                // If previously disabled/No, user might need to select. 
+                                // But if it was 'No', it stays 'No' until user changes. valid.
+                            });
+
+                            // Show Text Input if exists
+                            const textContainer = document.getElementById(`container-${baseId}_text`);
+                            if (textContainer) {
+                                textContainer.style.display = 'block';
+                            }
+                        }
+                    }
+
+                    // --- SANITIZE CODE SEARCH ---
+                    if (key.endsWith('_search')) {
+                        // ... existing search logic ... (omitted for brevity in prompt, but replacing block) 
+                        // Actually I need to be careful with replace range. I will insert the Compound Logic inside the input handler.
+
+                        const codeKey = key.replace('_search', '_code');
+                        const cleanVal = val.replace('+', '').toLowerCase().trim();
+
+                        // Always allow typing, search if meaningful
+                        if (cleanVal.length > 0) {
+                            const match = COUNTRY_CODES.find(c =>
+                                c.code.replace('+', '').startsWith(cleanVal) || // strict prefix for code
+                                c.code.replace('+', '') === cleanVal ||
+                                c.country.toLowerCase().includes(cleanVal)
+                            );
+
+                            if (match) {
+                                state.answers[codeKey] = match.code;
+                                state.answers['country'] = match.country;
+
+                                render();
+
+                                setTimeout(() => {
+                                    const searchInput = document.querySelector(`input[data-id="${key}"]`);
+                                    if (searchInput) {
+                                        searchInput.focus();
+                                        // Maintain cursor position
+                                        searchInput.setSelectionRange(val.length, val.length);
+                                    }
+                                }, 0);
+                                return;
+                            }
+                        }
+                    }
+
+                    // --- SMART PHONE LOGIC (Number Input) ---
+                    if (key.endsWith('_num')) {
+                        const codeKey = key.replace('_num', '_code');
+                        const codeSelect = document.querySelector(`select[data-id="${codeKey}"]`);
+
+                        // Reset manual override if input is cleared
+                        if (val === '' && codeSelect) {
+                            codeSelect.dataset.manual = "false";
+                        }
+
+                        // Auto-detect if not manually overridden
+                        if (codeSelect && codeSelect.dataset.manual !== "true") {
+                            // Find match: e.g. "82" starts with "82" (code +82)
+                            const match = COUNTRY_CODES.find(c => val.startsWith(c.code.replace('+', '')));
+                            if (match) {
+                                if (state.answers[codeKey] !== match.code) {
+                                    state.answers[codeKey] = match.code;
+                                    state.answers['country'] = match.country; // Update derived
+
+                                    // Force render to update dropdown and dependents
+                                    render();
+
+                                    // Refocus logic
+                                    setTimeout(() => {
+                                        const reInput = document.querySelector(`input[data-id="${key}"]`);
+                                        if (reInput) {
+                                            reInput.focus();
+                                            reInput.setSelectionRange(val.length, val.length);
+                                        }
+                                    }, 0);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    // -------------------------
+
+                    // SPECIAL LOGIC: Phone Code Changed (Manual) -> Detect Country
+                    if (key.endsWith('_code')) {
+                        const found = COUNTRY_CODES.find(c => c.code === val);
+                        if (found) {
+                            state.answers['country'] = found.country;
+                            render();
+                            setTimeout(() => {
+                                const nextInput = document.querySelector(`select[data-id="${key}"]`);
+                                if (nextInput) nextInput.focus();
+                            }, 0);
+                            return;
+                        }
+                    }
+
+                    // Branching / Scoring updates
+                    const triggersBranching = form.questions.some(q => q.condition);
+                    if (triggersBranching || form.hasScore) {
+                        render();
+                        if (e.target.type !== 'text' && e.target.type !== 'number' && e.target.type !== 'tel') {
+                            setTimeout(() => {
+                                const nextInput = document.querySelector(`input[data-id="${key}"]`);
+                                if (nextInput) nextInput.focus();
+                            }, 0);
+                        } else {
+                            setTimeout(() => {
+                                const nextInput = document.querySelector(`input[data-id="${key}"]`);
+                                if (nextInput) {
+                                    nextInput.focus();
+                                    let len = nextInput.value.length;
+                                    nextInput.setSelectionRange(len, len);
+                                }
+                            }, 0);
+                        }
+                    }
+
+                    // ALWAYS CHECK VALIDITY ON INPUT TO TOGGLE BUTTON
+                    validateCurrentStep(true); // silent check to toggle button
+                });
+            });
+
+            // Initial Check on Render
+            validateCurrentStep(true);
+        }
+
+        function calculateFormScore(form) {
+            let score = 0;
+            form.questions.forEach(q => {
+                if (q.type === 'score_03' || q.type === 'score_radio') {
+                    const val = parseInt(state.answers[q.id] || 0);
+                    score += val;
+                }
+            });
+            return score;
+        }
+
+        function validateEmail(val) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(val);
+        }
+
+        function cleanAnswers(form) {
+            if (!form || !form.questions) return;
+
+            const processList = (list) => {
+                list.forEach(q => {
+                    // Check if question is visible
+                    let visible = true;
+                    if (q.condition && !q.condition(state.answers)) visible = false;
+                    if (q.displayCondition && !q.displayCondition(state.answers)) visible = false;
+
+                    if (!visible) {
+                        // Clear Value
+                        if (q.type === 'compound_boolean') {
+                            state.answers[q.id + '_diag'] = null;
+                            state.answers[q.id + '_med'] = null;
+                        } else if (q.id) {
+                            state.answers[q.id] = null;
+                        }
+
+                        // Clear Sub-questions (Groups)
+                        if (q.questions) {
+                            processList(q.questions); // Recurse to clear children
+                        }
+                    } else {
+                        // If visible, check children
+                        if (q.questions) {
+                            processList(q.questions);
+                        }
+                    }
+                });
+            };
+
+            processList(form.questions);
+        }
+
+        function validateCurrentStep(silent = true) {
+            const form = state.eligibleForms[state.step];
+            if (!form) return false;
+
+            let isValid = true;
+
+            // Check all visible questions
+            for (let q of form.questions) {
+                if (q.condition && !q.condition(state.answers)) continue; // Skip hidden logic
+
+                const val = state.answers[q.id];
+
+                // 1. Standard Required
+                if (q.required && (!val || val.toString().trim() === '')) {
+                    isValid = false;
+                }
+
+                // 2. Special Email Logic
+                if (q.id === 'email') {
+                    const method = state.answers['result_method'];
+                    const emailError = document.querySelector('div[data-id="email_error"]');
+
+                    if (method === 'E-mail') {
+                        // Required + Format
+                        if (!val || !val.toString().trim()) {
+                            isValid = false;
+                            if (!silent && emailError) {
+                                emailError.innerText = "E-mail is required to receive results.";
+                                emailError.style.display = 'block';
+                            }
+                        } else if (!validateEmail(val)) {
+                            isValid = false;
+                            if (!silent && emailError) {
+                                emailError.innerText = "Please enter a valid e-mail address.";
+                                emailError.style.display = 'block';
+                            }
+                        } else {
+                            // Valid
+                            if (emailError) emailError.style.display = 'none';
+                        }
+                    } else {
+                        // Not required if Mail
+                        if (emailError) emailError.style.display = 'none';
+                    }
+                }
+
+                // 3. Age Validation (0-120)
+                if (q.id === 'age') {
+                    const ageError = document.querySelector('div[data-id="age_error"]');
+                    const ageVal = parseInt(val, 10);
+                    // Check: if empty (handled by required), if not number, or out of range
+                    // Only show error if value exists; if empty, 'required' handles it. 
+                    // But if typed 'abc', sanitize removed it, so val is empty.
+                    // If typed '150', val is '150'.
+                    if (val && (isNaN(ageVal) || ageVal < 0 || ageVal > 120)) {
+                        isValid = false;
+                        if (!silent && ageError) {
+                            ageError.innerText = "Please enter a valid age (0–120).";
+                            ageError.style.display = 'block';
+                        }
+                    } else if (ageError) {
+                        ageError.style.display = 'none';
+                    }
+                }
+
+                // 4. Compound Text Validation (Specific Diagnosis)
+                if (q.type === 'compound_boolean' && q.hasText) {
+                    const diagVal = state.answers[q.id + '_diag'];
+                    const textVal = state.answers[q.id + '_text'];
+                    const errEl = document.querySelector(`div[data-id="${q.id}_text_error"]`);
+
+                    if (diagVal === 'Yes') {
+                        if (!textVal || !textVal.toString().trim()) {
+                            isValid = false;
+                            if (!silent && errEl) errEl.style.display = 'block';
+                        } else {
+                            if (errEl) errEl.style.display = 'none';
+                        }
+                    } else {
+                        if (errEl) errEl.style.display = 'none';
+                    }
+                }
+            }
+
+            // Update Next Button State
+            if (els.btnNext) {
+                els.btnNext.disabled = !isValid;
+                els.btnNext.title = isValid ? "" : "Please complete all required fields";
+                els.btnNext.style.opacity = isValid ? "1" : "0.5";
+                els.btnNext.style.cursor = isValid ? "pointer" : "not-allowed";
+            }
+
+            return isValid;
+        }
+
+        function handleNext() {
+            // Re-validate just in case, though button should be disabled
+            if (!validateCurrentStep(false)) {
+                return; // Stop.
+            }
+
+            // Cleanup Hidden/Skipped Data
+            const currentForm = state.eligibleForms[state.step];
+            cleanAnswers(currentForm);
+
+            state.step++;
+            render();
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                const app = document.getElementById('app');
+                if (app) app.scrollTop = 0;
+            }, 0);
+        }
+
+        function handleBack() {
+            state.step--;
+            render();
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                const app = document.getElementById('app');
+                if (app) app.scrollTop = 0;
+            }, 0);
+        }
+
+        function renderSummary() {
+            els.title.innerText = "Summary of Results";
+            els.progress.style.width = '100%';
+            els.footer.innerHTML = '<button class="btn btn-primary" onclick="window.print()">Print Results</button>';
+
+            let html = `<div class="question-block"><h3>Review Your Answers</h3>`;
+
+            // Dump answers for now (formatted nicely)
+            const keys = Object.keys(state.answers);
+            keys.forEach(k => {
+                html += `<p><strong>${k}:</strong> ${state.answers[k]}</p>`;
+            });
+
+            html += `</div>`;
+            els.content.innerHTML = html;
+        }
+
+        // Start
+        init();
+
+    </script>
+</body>
+
+</html>

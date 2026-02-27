@@ -1,0 +1,449 @@
+Examinee Information
+Name:
+Resident Registration No.:
+Phone (Home):
+Mobile:
+Address:
+E-mail:
+How would you like to receive your health checkup results? ☐ Mail ☐ E-mail
+Instruction: Please answer all questions to receive an accurate health risk assessment result.
+
+1) Medical history / Current treatment
+Have you ever been diagnosed with, or are you currently taking medication for, any of the following?
+Stroke (cerebrovascular accident) (____)
+Diagnosed: ☐ Yes ☐ No / On medication: ☐ Yes ☐ No
+Myocardial infarction / Angina
+Diagnosed: ☐ Yes ☐ No / On medication: ☐ Yes ☐ No
+Hypertension
+Diagnosed: ☐ Yes ☐ No / On medication: ☐ Yes ☐ No
+Diabetes
+Diagnosed: ☐ Yes ☐ No / On medication: ☐ Yes ☐ No
+Dyslipidemia
+Diagnosed: ☐ Yes ☐ No / On medication: ☐ Yes ☐ No
+Pulmonary tuberculosis
+Diagnosed: ☐ Yes ☐ No / On medication: ☐ Yes ☐ No
+Other (including cancer): (____)
+Diagnosed: ☐ Yes ☐ No / On medication: ☐ Yes ☐ No
+
+2) Family history
+Among your parents/siblings, has anyone had or died from any of the following?
+Stroke (____) ☐ Yes ☐ No
+Myocardial infarction / Angina ☐ Yes ☐ No
+Hypertension ☐ Yes ☐ No
+Diabetes ☐ Yes ☐ No
+Other (including cancer): (____) ☐ Yes ☐ No
+
+3) Hepatitis B
+Are you a hepatitis B virus carrier?
+☐ Yes ☐ No ☐ Not sure
+
+4) Lifetime smoking
+Have you smoked 5 packs (100 cigarettes) or more in your lifetime?
+☐ No → Go to Q5
+☐ Yes, but quit now → Go to Q4-1
+☐ Yes, currently smoking → Go to Q4-2
+
+4-1) If you used to smoke but quit
+Total years smoked (before quitting): __ years
+Average cigarettes per day (before quitting): __ cigarettes/day
+
+4-2) If you currently smoke
+Total years smoking: __ years
+Average cigarettes per day: __ cigarettes/day
+
+5) E-cigarette use
+Have you ever used e-cigarettes?
+☐ Yes → Go to Q5-1
+☐ No
+
+5-1) In the last 1 month, how often did you use e-cigarettes? (During the past 1 year)
+☐ None
+☐ 1–2 days per month
+☐ 3–9 days per month
+☐ 10–29 days per month
+☐ Every day
+
+6) Drinking frequency (choose one)
+☐ __ times per week
+☐ __ times per month
+☐ __ times per year
+☐ I do not drink
+
+6-1) On drinking days, how much do you usually drink?
+(Write amount for the alcohol type you drink.)
+Soju: _ glasses / _ bottles / _ cans / _ cc
+Beer: _ glasses / _ bottles / _ cans / _ cc
+Spirits: _ glasses / _ bottles / _ cans / _ cc
+Makgeolli: _ glasses / _ bottles / _ cans / _ cc
+Wine: _ glasses / _ bottles / _ cans / _ cc
+
+6-2) What is the most you drank in a single day?
+Soju: _ glasses / _ bottles / _ cans / _ cc
+Beer: _ glasses / _ bottles / _ cans / _ cc
+Spirits: _ glasses / _ bottles / _ cans / _ cc
+Makgeolli: _ glasses / _ bottles / _ cans / _ cc
+Wine: _ glasses / _ bottles / _ cans / _ cc…
+
+7) Vigorous-intensity activity (past 1 week)
+
+7-1) On how many days did you do vigorous activity that made you breathe much harder?
+__ days/week
+Examples: running, aerobics, fast cycling, heavy labor, carrying loads up stairs, etc.
+7-2) On a typical day, how long did you do vigorous activity?
+__ hours __ minutes/day
+8) Moderate-intensity activity (past 1 week)
+8-1) On how many days did you do moderate activity that made you breathe a little harder?
+__ days/week
+(Exclude the vigorous activities you already counted.)
+Examples: brisk walking, doubles tennis, cycling at a normal pace, light carrying, cleaning, etc.
+8-2) On a typical day, how long did you do moderate activity?
+__ hours __ minutes/day
+9) Strength exercise (past 1 week)
+In the past week, on how many days did you do muscle-strengthening exercise (push-ups, sit-ups, dumbbells, weights, pull-ups, etc.)?
+__ days/week
+
+
+
+
+
+
+
+
+
+
+
+
+Form 2) 
+Additional Questionnaire (Only for age 66 / 70 / 80 health checkup recipients)
+Examinee Name: ___ / Resident Registration No.: ___
+Elderly Function Assessment
+Do you get the influenza (flu) vaccine every year? ☐ Yes ☐ No
+Have you received the pneumococcal vaccine? ☐ Yes ☐ No
+Activities of daily living (circle O for your current status)
+Can you eat by yourself when food is prepared? ☐ Yes ☐ No
+Can you dress yourself without help? ☐ Yes ☐ No
+Can you use the toilet by yourself? ☐ Yes ☐ No
+Can you bathe by yourself? ☐ Yes ☐ No
+Can you prepare meals by yourself? ☐ Yes ☐ No
+Can you go out on foot to places like shops/neighbors/hospital/public offices without help? ☐ Yes ☐ No
+Falls: Have you fallen in the past 6 months? ☐ Yes ☐ No
+Urination problems: Do you have difficulty urinating or episodes of urinary incontinence? ☐ Yes ☐ No
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Form 3)
+ Cognitive Impairment Screening Tool (KDSQ-C)
+(For eligible recipients: age 66+; administered every 2 years)
+Instruction: Compared with 1 year ago, mark the option that best describes your current status.
+(If a family member accompanies you, the family member should complete it; otherwise, the examinee completes it.)
+Scoring:
+No (0 points)
+Sometimes / a little yes (1 point)
+Often / a lot yes (2 points)
+You do not know well what month it is today or what day of the week it is.
+You cannot find things you put somewhere.
+You repeat the same questions.
+You forget appointments you made.
+You go to get something but forget and return without it.
+You hesitate because it is hard to name objects or people.
+You ask again because you don’t understand what was said during conversation.
+You have gotten lost or wandered.
+Your calculation ability has declined (e.g., cannot calculate prices or change).
+Your personality has changed compared with before.
+You have become clumsy using devices you used to handle well (e.g., washing machine, rice cooker, cultivator, etc.).
+You are less able to keep your room/house organized.
+You cannot choose appropriate clothes to wear by yourself.
+It is difficult to use public transportation alone to reach your destination
+(excluding cases due to physical problems such as arthritis).
+You try not to change underwear/clothes even when they are dirty.
+
+Score: __ / 30
+Form 4) 
+Mental Health Test – Depression Screening (PHQ-9, Korean version) 
+(Only for ages 40 / 50 / 60 / 70 health checkup recipients)
+Note: This is a self-check tool for depressive symptoms. It is not a definitive diagnosis. If you score high, depression may be likely, and a clinical evaluation is recommended.
+During the last 2 weeks, how often have you been bothered by any of the following problems?
+Choices (score):
+0 = Not at all
+1 = Several days
+2 = More than a week
+3 = Nearly every day
+Little interest or pleasure in doing things 0 1 2 3
+Feeling down, depressed, or hopeless 0 1 2 3
+Trouble falling or staying asleep, or sleeping too much 0 1 2 3
+Feeling tired or having little energy 0 1 2 3
+Poor appetite or overeating 0 1 2 3
+Feeling bad about yourself — or that you are a failure or have let yourself or your family down 0 1 2 3
+Trouble concentrating (e.g., when reading TV/newspaper or watching) 0 1 2 3
+Moving or speaking so slowly that others could notice, or the opposite — being so fidgety/restless that you move around more than usual 0 1 2 3
+Thoughts that you would be better off dead, or thoughts of self-harm in some way 0 1 2 3
+Score: __ / 27
+
+
+
+
+
+
+
+Form 5) 
+Smoking Lifestyle Assessment Tool (Only for ages 40 / 50 / 60 / 70)
+Examinee Name: ____
+Which applies to you?
+☐ Never smoker (End)
+☐ Former smoker (End)
+☐ Current smoker → Go to Q2
+☐ E-cigarette only user (End)
+
+Do you plan to quit smoking within the next __ months?
+☐ Plan to quit within 1 month
+☐ Plan to quit within 6 months
+☐ Not within 6 months, but someday
+☐ No plan to quit at all for now
+
+If you quit starting today, how confident are you that you will succeed?
+0 1 2 3 4 5 6 7
+(0 = Not at all) (7 = Very confident)
+
+How soon after you wake up do you smoke your first cigarette?
+☐ Within 5 minutes (3 points)
+☐ 6–30 minutes (2 points)
+☐ 31–60 minutes (1 point)
+☐ After 60 minutes (0 points)
+
+Is it hard not to smoke in no-smoking areas (e.g., church, theater, library)?
+☐ Yes (1 point) ☐ No (0 points)
+
+
+Which cigarette would be hardest to give up?
+☐ First one in the morning (1 point)
+☐ Any other (0 points)
+
+How many cigarettes do you smoke per day?
+☐ 10 or fewer (0 points)
+☐ 11–20 (1 point)
+☐ 21–30 (2 points)
+☐ 31 or more (3 points)
+
+Do you smoke more often during the first few hours after waking than during the rest of the day?
+☐ Yes (1 point) ☐ No (0 points)
+
+If you were so ill that you stayed in bed most of the day, would you still smoke?
+☐ Yes (1 point) ☐ No (0 points)
+
+Total: __
+
+
+
+
+
+
+
+
+
+
+
+
+Form 5-1) 
+Alcohol Lifestyle Assessment Tool (Only for ages 40 / 50 / 60 / 70)
+Examinee Name: ____
+Check the items that apply.
+
+How often do you drink alcohol?
+☐ Never (0)
+☐ Once a month or less (1)
+☐ 2–4 times a month (2)
+☐ 2–3 times a week (3)
+☐ 4+ times a week (4)
+On a typical drinking day, how much do you drink?
+(Choose the type you mainly drink and mark one option.)
+
+Soju
+☐ ≤ 1/2 bottle (0)
+☐ ≤ 1 bottle (1)
+☐ ~1.5 bottles (2)
+☐ ~2 bottles (3)
+☐ ≥ 2.5 bottles (4)
+
+Other alcohol
+(Spirits/wine counted by glasses; makgeolli: 1 bowl = 1 drink; beer: 1 can or 1 small bottle = 1 drink; draft beer 1 glass ≈ 500cc.)
+☐ 1–2 drinks (0)
+☐ 3–4 (1)
+☐ 5–6 (2)
+☐ 7–9 (3)
+☐ 10+ (4)
+
+How often do you drink heavily in one sitting?
+(Exceeding 5 bottles of soju or the equivalent; about 60g alcohol)
+☐ Never (0)
+☐ Less than once a month (1)
+☐ About once a month (2)
+☐ About once a week (3)
+☐ Almost daily (4)
+
+In the past year, have you been unable to stop drinking once you started?
+☐ Never (0) ☐ < monthly (1) ☐ monthly (2) ☐ weekly (3) ☐ almost daily (4)
+
+In the past year, has drinking caused problems in daily life?
+☐ Never (0) ☐ < monthly (1) ☐ monthly (2) ☐ weekly (3) ☐ almost daily (4)
+In the past year, have you had a “morning drink” (hangover drink) to steady yourself after heavy drinking?
+☐ Never (0) ☐ < monthly (1) ☐ monthly (2) ☐ weekly (3) ☐ almost daily (4)
+
+In the past year, have you felt regret after drinking?
+☐ Never (0) ☐ < monthly (1) ☐ monthly (2) ☐ weekly (3) ☐ almost daily (4)
+
+In the past year, have you been unable to remember what happened while drinking after you sobered up?
+☐ Never (0) ☐ < monthly (1) ☐ monthly (2) ☐ weekly (3) ☐ almost daily (4)
+
+Have you or someone else been injured because of your drinking?
+☐ No (0)
+☐ Yes, but not in the past year (2)
+☐ Yes, in the past year (4)
+
+
+Has a family member or doctor been concerned about your drinking or advised you to cut down/stop?
+☐ No (0)
+☐ Yes, but not in the past year (2)
+☐ Yes, in the past year (4)
+Total: __
+
+
+
+
+
+Form 5-2) 
+Physical Activity Lifestyle Assessment Tool (Only for ages 40 / 50 / 60 / 70)
+Examinee Name: ____
+This asks about time spent in various physical activities over the past week.
+Vigorous activity: makes you breathe much harder / heart beats very fast
+Moderate activity: makes you breathe a little harder / heart beats somewhat faster
+
+1) Work-related activity
+(Think of paid work, unpaid work, school life/education, housework, farming/fishing/livestock, job search, etc.)
+
+1-1) Does your work include at least 10 minutes of continuous vigorous activity?
+☐ Yes ☐ No → Go to 1-4
+(Examples: lifting/carrying heavy loads ~20kg+, digging, construction labor, carrying items up stairs, etc.)
+
+1-2) If yes, how many days per week? __ days/week
+1-3) If yes, how long per day? __ hours __ minutes/day
+1-4) Does your work include at least 10 minutes of continuous moderate activity?
+☐ Yes ☐ No → Go to 2
+(Examples: brisk walking, light carrying during work, cleaning, childcare, bathing a child, holding a child, etc.)
+1-5) If yes, how many days per week? __ days/week
+1-6) If yes, how long per day? __ hours __ minutes/day
+
+2) Transportation (excluding work-related activities above)
+
+2-1) Do you walk or cycle for at least 10 minutes when moving places?
+☐ Yes ☐ No → Go to 3
+2-2) If yes, how many days per week? __ days/week
+2-3) If yes, how long per day? __ hours __ minutes/day
+
+3) Sports / exercise / leisure (excluding work + transportation above)
+3-1) Do you do vigorous sports/exercise/leisure for at least 10 minutes?
+☐ Yes ☐ No → Go to 3-4
+(Examples: running, jump rope, hiking, basketball game, swimming, badminton, etc.)
+3-2) If yes, how many days per week? __ days/week
+3-3) If yes, how long per day? __ hours __ minutes/day
+3-4) Do you do moderate sports/exercise/leisure for at least 10 minutes?
+☐ Yes ☐ No → Go to 4
+(Examples: brisk walking, light jogging, weight training/strength exercise, golf, dance sports, Pilates, etc.)
+3-5) If yes, how many days per week? __ days/week
+3-6) If yes, how long per day? __ hours __ minutes/day
+
+4) Sedentary time (excluding sleep)
+On a typical day, how many hours/minutes do you spend sitting or lying down?
+__ hours __ minutes/day
+(Examples: sitting at a desk, sitting with friends, traveling by car/bus/train, reading, writing, card games, TV, gaming, computer/console, internet use, music listening, etc.)
+
+5) Strength exercise days (past 1 week)
+☐ None
+☐ 1 day
+☐ 2 days
+☐ 3 days
+☐ 4 days
+☐ 5+ days
+Safety screening
+Have you been told you should only exercise under a doctor’s advice because of a heart problem? 
+☐ Yes ☐ No
+Have you felt chest pain during exercise? 
+☐ Yes ☐ No
+Have you felt chest pain even when not exercising in the past month? 
+☐ Yes ☐ No
+Have you lost balance due to dizziness or fainting? 
+☐ Yes ☐ No
+Have you developed bone or joint problems after changing your exercise? 
+☐ Yes ☐ No
+Are you currently receiving prescriptions for blood pressure or heart problems? 
+☐ Yes ☐ No
+Is there any other reason you should not exercise? ☐ Yes ☐ No
+
+Form 5-3)
+Nutrition Lifestyle Assessment Tool (Only for ages 40 / 50 / 60 / 70)
+Examinee Name: ____
+You drink at least 1 cup (200ml) per day of milk, calcium-fortified soy milk, other dairy products, yogurt, etc.
+☐ Often (5) ☐ Average (3) ☐ Rarely (1)
+You eat 3+ servings per day of foods made from meat/fish/eggs/beans/tofu, etc.
+☐ Often (5) ☐ Average (3) ☐ Rarely (1)
+
+You eat vegetables (other than kimchi) at every meal.
+☐ Often (5) ☐ Average (3) ☐ Rarely (1)
+
+You eat fruit (1 piece/day; including blended form).
+☐ Often (5) ☐ Average (3) ☐ Rarely (1)
+
+How often do you eat fried or stir-fried foods?
+☐ 4+ times/week (1) ☐ 2–3 times/week (3) ☐ ≤1 time/week (5)
+
+How often do you eat high-cholesterol foods (e.g., pork belly, egg yolk, squid, etc.)?
+☐ 4+ times/week (1) ☐ 2–3 times/week (3) ☐ ≤1 time/week (5)
+
+You eat one of the following daily: ice cream, cake, snacks, sugary drinks, mixed coffee, cola, sweet rice drink (sikhye), etc.
+☐ Often (1) ☐ Average (3) ☐ Rarely (5)
+
+You eat salted/fermented side dishes daily (e.g., salted seafood, pickles, dried/salted fish, etc.).
+☐ Often (1) ☐ Average (3) ☐ Rarely (5)
+
+You eat meals at regular times every day.
+☐ Often (5) ☐ Average (3) ☐ Rarely (1)
+
+Out of 5 food groups (grains; meat/fish/eggs/beans; vegetables; fruits; dairy), how many groups do you usually eat in a day?
+☐ 5 groups (5) ☐ 4 groups (3) ☐ 3 or fewer (1)
+
+How often do you eat out? (excluding meals provided at work)
+☐ 5+ times/week (1) ☐ 2–4 times/week (3) ☐ ≤1 time/week (5)
+Total: __
+Form 5-4) 
+Obesity Lifestyle Assessment Tool (Only for ages 40 / 50 / 60 / 70)
+Examinee Name: ____
+Obesity lifestyle assessment: ☐ Eligible ☐ Not eligible
+* Only if BMI ≥ 25 kg/m²
+Height: __ cm
+Weight: __ kg
+Waist circumference: __ cm
+BMI: __ kg/m²
+
+Has your current weight increased by 10 kg or more compared with your late teens or early 20s?
+☐ Yes ☐ No
+
+How many times have you tried to lose weight so far?
+☐ Never
+☐ 1–3 times
+☐ 4+ times
+☐ Always trying
+
+Are you interested in maintaining a normal weight continuously through weight loss?
+☐ Not very interested
+☐ Somewhat interested
+☐ Very interested
