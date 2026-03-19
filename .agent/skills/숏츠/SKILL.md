@@ -1,4 +1,4 @@
-/---
+---
 name: movie
 description: 영화(movie)에 대한 작업을 처리하는 스킬입니다.
 ---
