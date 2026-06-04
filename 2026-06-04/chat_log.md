@@ -300,4 +300,80 @@ https://www.youtube.com/@%EC%9D%B4%EC%BD%94%EB%9E%A9
 <truncated 474 bytes>\n\n---\n\n### 👤 대표님 (USER)\n좋아.
 지금까지 애기한거 
 깃허브에 최근 폴더, 폴더 이름은 오늘 날자로 해서 직원들, 대화 내용등 
-다~ 올려놔 집에가서 다운받아서 작업 계속하게.\n
+다~ 올려놔 집에가서 다운받아서 작업 계속하게.\n\n---\n\n### 🤖 코다리 PM (Antigravity)\n![성공](https://raw.githubusercontent.com/wonseokjung/solopreneur-ai-agents/main/agents/kodari/assets/kodari_success.png)
+
+대표님, 요청하신 모든 작업 내역과 자료를 오늘 날짜 폴더(**`2026-06-04`**)로 깔끔하게 취합하여 깃허브 원격 저장소(`youngfeel25-coder/AntiShorts`)에 안전하게 업로드 완료했습니다! ⚙️
+
+집에 귀가하신 뒤 깃허브에서 풀(`git pull`)을 받으시면 바로 이어서 작업하실 수 있도록 완벽하게 구성해 두었습니다.
+
+---
+
+### 📂 깃허브 업로드 완료 파일 목록 (d:\Anti\2026-06-04)
+1.  **`ai_staff_list.md`**: 현재 프로젝트를 보좌하는 AI 직원 25명의 상세 명단 리스트
+2.  **`chat_log.md`**: 오늘 대표님과 나눈 대화 핵심 내용만 파싱한 정제된 텍스트 로그
+3.  **`cursed_hearts_ep1_script.md`**: 무대사 글로벌 72초 무언극 형태로 작성된 'Cursed Hearts' EP.1 전체 대본
+<truncated 670 bytes>\n\n---\n\n### 👤 대표님 (USER)\n코부장.\n\n---\n\n### 🤖 코다리 PM (Antigravity)\n![인사](https://raw.githubusercontent.com/wonseokjung/solopreneur-ai-agents/main/agents/kodari/assets/kodari_salute.png)
+
+**확인했습니다, 대표님. 코다리 매니저입니다.** ✅
+
+언제든지 필요하신 사항이 있으시면 말씀해 주십시오. 준비 상태로 대기하고 있겠습니다. 💻\n\n---\n\n### 👤 대표님 (USER)\nreset\n\n---\n\n### 🤖 코다리 PM (Antigravity)\n![커피](https://raw.githubusercontent.com/wonseokjung/solopreneur-ai-agents/main/agents/kodari/assets/kodari_coffee.png)
+
+**확인했습니다, 대표님. 모든 임시 작업을 초기화하고 대기 모드로 전환합니다.** ✅
+
+새로운 프로젝트나 요청 사항이 생기시면 언제든 편하게 말씀해 주십시오. 💻\n\n---\n\n### 👤 대표님 (USER)\n참고 이미지 
+뭘까요~~?\n\n---\n\n### 🤖 코다리 PM (Antigravity)\n![아이디어](https://raw.githubusercontent.com/wonseokjung/solopreneur-ai-agents/main/agents/kodari/assets/kodari_idea.png)
+
+대표님, 이 화면은 **Google의 Flow AI (ImageFX Flow)** 프로젝트 작업 화면이네요! ⚙️
+
+우리가 진행하고 있는 **'Cursed Hearts (저주받은 심장)'** 프로젝트의 모든 핵심 비주얼과 일관성 고정용 캐릭터 시트들이 한자리에 모여 있는 보드입니다. 구체적으로 들여다보면 다음과 같습니다:
+
+1.  **좌측 상단 & 우측 하단 (스토리보드 그리드)**:
+    *   카엘렌의 저주받은 손끝 붉은 장미 소멸, 시장에서 엘라일라와의 조우, 백마를 탄 등장씬 등 우리가 대본으로 작성했던 스토리보드 프레임 12컷 그리드 이미지들입니다.
+2.  **우측 상단 (이사벨라 - 악역/서브여주)**:
+<truncated 1243 bytes>\n\n---\n\n### 👤 대표님 (USER)\n에이젼트 가이드 생성해줘~~\n\n---\n\n### 🤖 코다리 PM (Antigravity)\n![아이디어](https://raw.githubusercontent.com/wonseokjung/solopreneur-ai-agents/main/agents/kodari/assets/kodari_idea.png)
+
+대표님, Google Flow AI의 **'에이전트 요청 사항'** 입력창에 그대로 복사해서 넣으실 수 있는 **최적화된 영어 가이드라인(Agent Guideline)**을 대령합니다. 
+
+이 가이드를 넣어두면 Flow AI가 캐릭터 시트의 얼굴과 화풍을 기억하여 오작동 없이 일관된 이미지를 생성합니다.
+
+---
+
+### 📋 Flow AI '에이전트 요청 사항' 입력용 텍스트
+
+```markdown
+# Core Project Style & Rules
+- **Genre & Mood**: Refined cinematic dark fantasy romance, highly detailed, photorealistic.
+- **Color Palette**: Strict "Teal & Gold" and "Dark Forest Green & Warm Gold" cinematic lighting. 
+- **Quality**: Masterpiece, 8k resolution, volumetric lighting, natural depth of field. Avoid low-quality, cartoonish, or stylized oil painting looks.
+<truncated 1437 bytes>\n\n---\n\n### 👤 대표님 (USER)\n이렇게 짧아?\n\n---\n\n### 🤖 코다리 PM (Antigravity)\n![당황](https://raw.githubusercontent.com/wonseokjung/solopreneur-ai-agents/main/agents/kodari/assets/kodari_panic.png)
+
+아, 제가 너무 축약하여 대령했군요! 대표님, 죄송합니다. ⚙️
+
+Google Flow AI 에이전트는 **입력칸의 가이드가 정교하고 구체적일수록 이미지 간 오차와 화풍 깨짐을 비약적으로 줄여줍니다.** 
+
+화질 제어, 카메라 앵글 공식, 씬별 연출 규칙, 그리고 캐릭터별 세부 복식 및 광학적 특성까지 디테일하게 꽉 채운 **'프리미엄 롱버전 가이드라인'**을 다시 대령합니다.
+
+---
+
+### 📋 Flow AI '에이전트 요청 사항' 입력용 텍스트 (상세 확장본)
+
+```markdown
+# [SYSTEM MANDATE]
+<truncated 6584 bytes>\n\n---\n\n### 👤 대표님 (USER)\n참조는 아무것도 안너어도 돼?\n\n---\n\n### 🤖 코다리 PM (Antigravity)\n![부탁](https://raw.githubusercontent.com/wonseokjung/solopreneur-ai-agents/main/agents/kodari/assets/kodari_please.png)
+
+대표님, **아닙니다! 참조(Reference)는 반드시 넣으셔야 합니다.** ⚠️
+
+가이드는 AI에게 "이렇게 행동해라"라는 규칙만 주는 것이고, 실제 캐릭터의 얼굴과 생김새를 똑같이 맞추려면 화면 좌측에 있는 **참조(+ 버튼)**를 눌러 캐릭터 시트 이미지들을 연결해 주어야 합니다.
+
+Flow AI에서 캐릭터를 완벽하게 고정하기 위해 **참조에 넣어야 할 이미지와 에이전트 요청 사항 매핑 가이드**를 짚어드립니다.
+
+---
+
+### 🧬 참조(Reference) 설정 방법
+
+1.  **각 요청 사항(프롬프트)마다 해당하는 캐릭터의 참조 이미지를 추가해야 합니다.**
+    *   **카엘렌(남주) 단독 씬**: `Kaelen.png` 참조 추가
+    *   **엘라일라(여주) 단독 씬**: `Elayla_W.png` 참조 추가
+<truncated 922 bytes>\n\n---\n\n### 👤 대표님 (USER)\n코부장.
+https://www.youtube.com/@dresqelle/shorts
+이 쇼츠 수퍼 디테일하게 분석해줘 전체!\n
