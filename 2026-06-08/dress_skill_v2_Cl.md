@@ -162,4 +162,14 @@ The thumbnail is the single most important visual that drives the Click-Through 
 1. **Setting**: Must be set on the actual fashion show runway stage of the concept (e.g., reflective ice floor, burning stage, sand dunes) with dramatic stage lighting, volumetric spotlights, mist/fog, and a professional haute couture runway atmosphere. Do NOT use simple flat color backgrounds for the final dress thumbnail; the runway environment is key to selling the high-end fashion show fantasy.
 2. **Shot Type**: Full-body or three-quarter (3/4) vertical 9:16 shot. It must showcase the complete dress silhouette, tiara/crown, and cape flowing.
 3. **Pose & Expression**: The model must walk/strut directly towards the camera, maintaining direct eye contact with a fierce, confident, and captivating expression.
-4. **Aspect Ratio**: 9:16.
+4. **Aspect Ratio**: 9:16.
+
+---
+
+## Step 6 — Step-by-Step Execution Guidelines
+
+To support the Representative's execution tempo, enforce the following workflow during image/video generation:
+1. **One-Cut Focus**: Never generate or suggest prompts for more than one cut at a time. Finish the current cut, present the outputs/instructions, and stop.
+2. **Command Trigger**: Do not proceed to the next cut until the Representative explicitly says "next" or "다음".
+3. **No Overclaiming**: Report progress neutrally and concisely. Avoid excessively polite summaries or claiming perfect alignment.
+
