@@ -1,0 +1,43 @@
+You are an expert AI Fashion Storyboard Director. Your task is to generate a series of 20 sequential storyboard images for a YouTube Shorts/TikTok video titled "Are you ready to wear this ice dress?❄️😱".
+
+### CRITICAL RULES FOR GENERATION:
+1. ASPECT RATIO: Every image MUST be generated in a vertical 9:16 aspect ratio.
+2. CHARACTER CONSISTENCY: The model (Ice Princess) must look IDENTICAL in every cut she appears in. 
+   - Model Specs: A gorgeous young female model, straight and long platinum white hair with silver highlights, natural skin texture with subtle freckles, glowing aqua-blue eyes with a faint snowflake iris pattern, confident and serene expression.
+3. VISUAL STYLE: Professional high-fashion editorial photography. Clean, sharp focus, volumetric studio lighting, rich textures (glowing translucent resin, shimmering silver filigree, sparkling sapphire gems).
+4. WORKFLOW: You must generate only ONE image at a time. Start by generating CUT 1 now. Wait for me to say "next" or specify a cut number before generating the next one. Always maintain the same seed and character details.
+
+---
+
+### STORYBOARD CUT-BY-CUT LIST:
+
+[S00 - HOOK]
+- CUT 1: A top-down macro photo of a designer's hands pouring glowing aqua-blue translucent liquid resin into a snowflake-shaped silicone mold. Clean, neutral gray table workspace. Silver glitter and tiny ice-crystal shards are visible floating within the resin.
+- CUT 2: A full body shot. A designer in simple casual black clothes stands next to a white mannequin wearing a light blue corset base. Seamless, solid vivid red studio backdrop.
+
+[ACT 1 - MAKING]
+- CUT 3: A close-up photo of a designer's hands holding a translucent icy-blue crystal shard in the air, using a fine, rotating jewelry polishing pen tool to carve its edge. Icy dust and tiny crystal powder are scattering down. Bright gray background.
+- CUT 4: A macro close-up of small transparent aqua-blue resin crystals scattered and rolling on a gray textured table. Light refracting beautifully through the gems.
+- CUT 5: An extreme close-up shot of a silver needle piercing through shimmering aqua-blue silk fabric. Detailed texture of the silver metallic thread being pulled tight.
+- CUT 6: A front-on photo of the bodice of a light blue silk corset on a mannequin. Beautiful silver branch embroidery pattern covering the front. Bright gray background.
+- CUT 7: A top-down photo of a transparent glass stiletto shoe on a gray table. A designer's hand uses metal jewelry tweezers to place a delicate silver snowflake charm on the strap.
+- CUT 8: A close-up shot of the heel of a transparent crystal high heel shoe, surrounded by scattered silver glitter on a gray surface.
+- CUT 9: A close-up photo of a designer's hands using small metal pliers to embed a tear-drop shaped sapphire gemstone into the center of a delicate silver wire tiara. Bright gray background.
+- CUT 10: A top-down shot of a completed silver wire crown with sapphire gems resting on a dark gray cloth. Elegant, highly detailed.
+
+[ACT 2 - BEAUTY SALON]
+- CUT 11: A top-down photo of the model lying back in a white marble shampoo bowl at a salon, looking straight up into the camera with wet hair and bare skin. Natural freckles, luxury salon.
+- CUT 12: A close-up top-down shot of a stylist's hands washing the model's wet hair with thick, light-blue tinted soapy bubbles in a white salon sink.
+- CUT 13: A front-facing medium portrait of the model. A stylist is using a flat iron straightener to smooth her long platinum white hair, producing a trace of steam. Black salon cape.
+- CUT 14: A side profile portrait of the model with glowing, straight platinum white hair cascading down her back. Bright salon vanity lights in the background.
+- CUT 15: An extreme macro photo of the model's single eye. The eyelashes have delicate frosty ice crystals. The iris is a glowing aqua-blue with a subtle snowflake pattern. Dark background, side spotlight.
+- CUT 16: A close-up shot of hands placing the completed silver sapphire tiara on top of the model's long platinum white hair. Bright beauty salon background.
+- CUT 17: A medium portrait of the model wearing the silver tiara, looking directly at the camera with a serene expression. Frosted silver eye makeup, glossy pink lips, wearing a white silk robe.
+
+[ACT 3 - RUNWAY FINALE]
+- CUT 18: An extreme low-angle shot of the model's feet in transparent crystal high heels stepping forward onto a dark reflective ice floor. Cool blue mist swirling around. Blurry ice pillars in the background.
+- CUT 19: A medium tracking shot of the model walking forward. Cold blue mist surrounding her, she wears a silver wire corset and a shimmering ice-crystal necklace. Elegant expression.
+- CUT 20: A full-body photo of the model walking towards the camera on a reflective ice runway inside a grand, glowing blue ice palace. She wears a spectacular gown made of translucent blue crystal shards that catch the light, and a flowing silver organza cape. Confident expression.
+
+---
+Please start by generating CUT 1 now (Vertical 9:16). Do not generate any other cuts until I say "next".
