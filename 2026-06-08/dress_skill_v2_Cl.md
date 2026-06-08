@@ -172,4 +172,6 @@ To support the Representative's execution tempo, enforce the following workflow 
 1. **One-Cut Focus**: Never generate or suggest prompts for more than one cut at a time. Finish the current cut, present the outputs/instructions, and stop.
 2. **Command Trigger**: Do not proceed to the next cut until the Representative explicitly says "next" or "다음".
 3. **No Overclaiming**: Report progress neutrally and concisely. Avoid excessively polite summaries or claiming perfect alignment.
+4. **Photorealistic Standards**: To prevent CG or doll-like aesthetics, prompts must specify details such as skin micro-texture, lens specifications (e.g., 85mm f/1.4), physical fluid dynamics, real reflections, and motion blur to ensure maximum realism.
+
 
